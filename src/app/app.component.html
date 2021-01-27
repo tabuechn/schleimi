@@ -1,0 +1,53 @@
+
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img width="40" alt="Angular Logo" src="../assets/formigas-logoliteraltype-yellow.svg" />
+  <span>Schleimi</span>
+  <div class="spacer"></div>
+  <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
+
+  </a>
+</div>
+
+<div class="content" role="main">
+
+
+
+
+  <!-- Summary -->
+  <h2 class="header-text">Schlechten Tag gehabt?</h2>
+  <p class="header-text">
+    Hey, das geht jedem mal so, Schleimi ist für dich da und hatt ein paar nette Worte für dich übrig, hier probier mal:
+  </p>
+
+  <div class="card-container">
+    <a id="get-compliment-button" class="card" (click)="requestCompliment()">
+
+      <span class="header-text">Kompliment anfordern</span>
+
+    </a>
+
+
+
+  </div>
+
+  <!-- Compliment Display -->
+
+  <div class="compliment-container" [ngClass]="{'animation': loading}" >
+
+    <div *ngIf="currentCompliment === null && !loading" class="compliment-content">
+      <span class="compliment-text">{{complimentPlaceholderText}}</span>
+    </div>
+    <div *ngIf="currentCompliment !== null && !loading" class="compliment-content filled-content">
+      <span class="compliment-text">{{currentCompliment.text}}</span>
+      <img class="compliment-image" [src]="currentCompliment.imgSrc" />
+    </div>
+    <div *ngIf="loading" class="compliment-content">
+      <p-progressSpinner></p-progressSpinner>
+    </div>
+
+  </div>
+
+
+  <router-outlet></router-outlet>
